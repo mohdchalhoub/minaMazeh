@@ -198,6 +198,7 @@ ${formData.name}`
                     src="/minaMazehProfile.jpg"
                     alt="Mina Mazeh - Educational Consultant"
                     className="w-full h-full object-cover"
+                    loading="eager"
                   />
                 </div>
                 <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-background border border-border p-4 sm:p-6 max-w-xs">
