@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { MobileNav } from "@/components/mobile-nav"
+import { BookingModal } from "@/components/booking-modal"
 import {
   GraduationCap,
   FileText,
@@ -32,6 +33,7 @@ interface ContactFormData {
 
 export default function HomePage() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -578,7 +580,12 @@ ${formData.name}`
                   <div className="text-center space-y-4">
                     <h3 className="text-lg sm:text-xl font-light">Ready to start?</h3>
                     <p className="text-sm text-muted-foreground">Book a free consultation to discuss your goals.</p>
-                    <Button variant="outline" size="lg" className="w-full bg-transparent">
+                    <Button 
+                      variant="outline" 
+                      size="lg" 
+                      className="w-full bg-transparent"
+                      onClick={() => setIsBookingModalOpen(true)}
+                    >
                       Schedule free consultation
                     </Button>
                   </div>
@@ -649,6 +656,12 @@ ${formData.name}`
       </footer>
 
       <ScrollToTop />
+      
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </div>
   )
 }
