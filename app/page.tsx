@@ -407,7 +407,7 @@ ${formData.name}`
                     <div className="space-y-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-3">
                         <Clock className="w-4 h-4" />
-                        <span>6-month program starting in October</span>
+                        <span>6-month program</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <Users className="w-4 h-4" />
@@ -564,7 +564,7 @@ ${formData.name}`
                     </div>
                     <div className="flex justify-between text-muted-foreground">
                       <span>Saturday</span>
-                      <span>10:00 AM - 4:00 PM</span>
+                      <span>Closed</span>
                     </div>
                     <div className="flex justify-between text-muted-foreground">
                       <span>Sunday</span>
@@ -646,7 +646,7 @@ ${formData.name}`
             </div>
 
             <div className="border-t border-border mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-sm sm:text-base text-muted-foreground">
-              <p>&copy; 2024 Mina Mazeh. All rights reserved.</p>
+              <p>&copy; 2025 Mina Mazeh. All rights reserved.</p>
             </div>
           </div>
         </div>
