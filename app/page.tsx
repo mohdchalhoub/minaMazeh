@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { MobileNav } from "@/components/mobile-nav"
 import { BookingModal } from "@/components/booking-modal"
+import { JoinCourseButton } from "@/components/join-course-button"
 import {
   GraduationCap,
   FileText,
@@ -434,12 +435,7 @@ ${formData.name}`
                       </div>
                     </div>
 
-                    <Button size="lg" className="w-full" asChild>
-                      <a href="#contact" className="flex items-center justify-center gap-2">
-                        Join our next course
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </Button>
+                    <JoinCourseButton />
                   </div>
                 </div>
               </CardContent>
