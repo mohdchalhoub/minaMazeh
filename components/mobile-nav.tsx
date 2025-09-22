@@ -78,24 +78,24 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 transform transition-all duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 z-50 transform transition-all duration-300 ease-out md:hidden flex flex-col ${
           isOpen ? "translate-x-0 shadow-2xl" : "translate-x-full"
         }`}
         style={{
           backgroundColor: '#ffffff',
-          borderLeft: '1px solid #e5e7eb'
+          borderLeft: '1px solid #e5e7eb',
+          height: '100vh',
+          width: '320px',
+          maxWidth: '85vw'
         }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-menu-title"
+        onClick={(e) => e.stopPropagation()}
       >
+        {/* Header */}
         <div 
-          className="absolute inset-0" 
-          style={{ backgroundColor: '#ffffff' }}
-        />
-
-        <div 
-          className="relative z-10 flex items-center justify-between p-6 border-b"
+          className="flex items-center justify-between p-6 border-b flex-shrink-0"
           style={{
             backgroundColor: '#ffffff',
             borderBottomColor: '#e5e7eb'
@@ -112,15 +112,20 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
             variant="ghost"
             size="sm"
             onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-muted/50 transition-colors"
+            className="p-2 hover:bg-gray-100 transition-colors rounded-full"
             aria-label="Close menu"
+            style={{
+              backgroundColor: 'transparent',
+              border: '1px solid #e5e7eb'
+            }}
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" style={{ color: '#374151' }} />
           </Button>
         </div>
 
+        {/* Navigation Items */}
         <nav 
-          className="relative z-10 p-6" 
+          className="flex-1 p-6 overflow-y-auto" 
           role="navigation"
           style={{ backgroundColor: '#ffffff' }}
         >
@@ -150,16 +155,18 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
           </div>
         </nav>
 
+        {/* Footer with Get in Touch Button */}
         <div 
-          className="absolute bottom-0 left-0 right-0 p-6 border-t z-10"
+          className="flex-shrink-0 p-6 border-t"
           style={{
             backgroundColor: '#ffffff',
-            borderTopColor: '#e5e7eb'
+            borderTopColor: '#e5e7eb',
+            borderTop: '1px solid #e5e7eb'
           }}
         >
-          <div className="text-center space-y-4">
+          <div className="text-center">
             <div 
-              className="text-sm"
+              className="text-sm mb-4"
               style={{ color: '#4b5563' }}
             >
               Ready to start your journey?
