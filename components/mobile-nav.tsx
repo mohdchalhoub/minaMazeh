@@ -129,7 +129,7 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
           role="navigation"
           style={{ backgroundColor: '#ffffff' }}
         >
-          <div className="space-y-2">
+          <div className="space-y-2 mb-6">
             {navItems.map((item, index) => (
               <button
                 key={item.href}
@@ -153,33 +153,32 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
               </button>
             ))}
           </div>
-        </nav>
 
-        {/* Footer with Get in Touch Button */}
-        <div 
-          className="flex-shrink-0 p-6 border-t"
-          style={{
-            backgroundColor: '#ffffff',
-            borderTopColor: '#e5e7eb',
-            borderTop: '1px solid #e5e7eb'
-          }}
-        >
-          <div className="text-center">
-            <div 
-              className="text-sm mb-4"
-              style={{ color: '#4b5563' }}
-            >
-              Ready to start your journey?
+          {/* Get in Touch Button - moved inside nav area */}
+          <div 
+            className="border-t pt-6"
+            style={{
+              borderTopColor: '#e5e7eb',
+              borderTop: '1px solid #e5e7eb'
+            }}
+          >
+            <div className="text-center">
+              <div 
+                className="text-sm mb-4"
+                style={{ color: '#4b5563' }}
+              >
+                Ready to start your journey?
+              </div>
+              <Button
+                size="lg"
+                className="w-full transition-all duration-200 hover:shadow-md"
+                onClick={() => handleNavClick("#contact")}
+              >
+                Get in touch
+              </Button>
             </div>
-            <Button
-              size="lg"
-              className="w-full transition-all duration-200 hover:shadow-md"
-              onClick={() => handleNavClick("#contact")}
-            >
-              Get in touch
-            </Button>
           </div>
-        </div>
+        </nav>
       </div>
     </>
   )
