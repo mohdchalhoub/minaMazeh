@@ -195,7 +195,7 @@ ${formData.name}`
               <div className="relative animate-fade-in-up animation-delay-200 order-1 lg:order-2">
                 <div className="aspect-[4/5] relative overflow-hidden bg-muted/20 border border-border max-w-md mx-auto lg:max-w-none">
                   <img
-                    src="/professional-portrait-of-mina-mazeh--educational-c.jpg"
+                    src="/minaMazehProfile.jpg"
                     alt="Mina Mazeh - Educational Consultant"
                     className="w-full h-full object-cover"
                   />
