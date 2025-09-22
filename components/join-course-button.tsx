@@ -18,13 +18,12 @@ export function JoinCourseButton({
     // Create email content
     const subject = encodeURIComponent("Join Next Language Course")
     const body = encodeURIComponent(
-      `Hello Mazehmina Team,
+      `Hello Mazeh Mina,
 
 I would like to join your next language course. Here are my details:
 
 - Full Name: 
-- Age: 
-- Language I want to study: 
+- Age:
 - My current level (if known): 
 - Availability (Days/Times): 
 - Phone or WhatsApp: 

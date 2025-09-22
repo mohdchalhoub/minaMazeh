@@ -93,10 +93,9 @@ Preferred Time: ${formData.preferredTime}
 Message:
 ${formData.message || 'No additional message provided'}
 
-Please confirm this appointment with the client.
+Please confirm this appointment with me.
 
-Best regards,
-Your Website`
+Best regards,`
       )
 
       // Open email client with mailto
