@@ -22,7 +22,13 @@ import {
   ArrowRight,
 } from "lucide-react"
 import { useEffect, useState } from "react"
-import { sendEmail, ContactFormData } from "@/lib/email"
+
+interface ContactFormData {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
 
 export default function HomePage() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
@@ -32,8 +38,6 @@ export default function HomePage() {
     subject: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
@@ -43,38 +47,31 @@ export default function HomePage() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
+  const handleSendMessage = () => {
     // Basic validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      setSubmitStatus('error')
+      alert('Please fill in all required fields.')
       return
     }
 
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
+    // Create email content
+    const subject = encodeURIComponent(formData.subject)
+    const body = encodeURIComponent(
+      `Hello Mina,
 
-    try {
-      const success = await sendEmail(formData)
-      
-      if (success) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        })
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      console.error('Error sending email:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
+Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}
+
+Best regards,
+${formData.name}`
+    )
+
+    // Open email client with mailto
+    const mailtoLink = `mailto:mazehmina@gmail.com?subject=${subject}&body=${body}`
+    window.open(mailtoLink, '_blank')
   }
 
   useEffect(() => {
@@ -447,23 +444,7 @@ export default function HomePage() {
 
             <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
               <div className="space-y-8 animate-fade-in-up animation-delay-200">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-md">
-                      <p className="text-green-800 text-sm">
-                        Thank you! Your message has been sent successfully. I'll get back to you soon.
-                      </p>
-                    </div>
-                  )}
-                  
-                  {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-                      <p className="text-red-800 text-sm">
-                        Sorry, there was an error sending your message. Please try again or contact me directly at mazehmina@gmail.com
-                      </p>
-                    </div>
-                  )}
-
+                <div className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-normal text-muted-foreground">
@@ -521,14 +502,14 @@ export default function HomePage() {
                     />
                   </div>
                   <Button 
-                    type="submit" 
+                    type="button"
                     size="lg" 
                     className="w-full"
-                    disabled={isSubmitting}
+                    onClick={handleSendMessage}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send message'}
+                    Send message
                   </Button>
-                </form>
+                </div>
               </div>
 
               <div className="space-y-12 animate-fade-in-up animation-delay-400">
