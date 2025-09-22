@@ -78,17 +78,34 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-background/95 backdrop-blur-md border-l border-border z-50 transform transition-all duration-300 ease-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 transform transition-all duration-300 ease-out md:hidden ${
           isOpen ? "translate-x-0 shadow-2xl" : "translate-x-full"
         }`}
+        style={{
+          backgroundColor: '#ffffff',
+          borderLeft: '1px solid #e5e7eb'
+        }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-menu-title"
       >
-        <div className="absolute inset-0 bg-background/98 backdrop-blur-lg" />
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundColor: '#ffffff' }}
+        />
 
-        <div className="relative z-10 flex items-center justify-between p-6 border-b border-border bg-background/90">
-          <div id="mobile-menu-title" className="text-lg font-medium tracking-tight">
+        <div 
+          className="relative z-10 flex items-center justify-between p-6 border-b"
+          style={{
+            backgroundColor: '#ffffff',
+            borderBottomColor: '#e5e7eb'
+          }}
+        >
+          <div 
+            id="mobile-menu-title" 
+            className="text-lg font-medium tracking-tight"
+            style={{ color: '#111827' }}
+          >
             Navigation
           </div>
           <Button
@@ -102,14 +119,30 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
           </Button>
         </div>
 
-        <nav className="relative z-10 p-6" role="navigation">
+        <nav 
+          className="relative z-10 p-6" 
+          role="navigation"
+          style={{ backgroundColor: '#ffffff' }}
+        >
           <div className="space-y-2">
             {navItems.map((item, index) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="block w-full text-left text-lg font-light text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-all duration-200 py-3 px-4 rounded-md border border-transparent hover:border-border"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="block w-full text-left text-lg font-light transition-all duration-200 py-3 px-4 rounded-md border border-transparent hover:border-gray-200"
+                style={{ 
+                  color: '#111827',
+                  backgroundColor: 'transparent',
+                  animationDelay: `${index * 50}ms`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.color = '#111827';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#111827';
+                }}
               >
                 {item.label}
               </button>
@@ -117,9 +150,20 @@ export function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
           </div>
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-border bg-background/90 z-10">
+        <div 
+          className="absolute bottom-0 left-0 right-0 p-6 border-t z-10"
+          style={{
+            backgroundColor: '#ffffff',
+            borderTopColor: '#e5e7eb'
+          }}
+        >
           <div className="text-center space-y-4">
-            <div className="text-sm text-muted-foreground">Ready to start your journey?</div>
+            <div 
+              className="text-sm"
+              style={{ color: '#4b5563' }}
+            >
+              Ready to start your journey?
+            </div>
             <Button
               size="lg"
               className="w-full transition-all duration-200 hover:shadow-md"
