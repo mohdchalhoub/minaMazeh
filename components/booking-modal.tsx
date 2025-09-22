@@ -77,9 +77,40 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     e.preventDefault()
     
     if (validateForm()) {
-      // Log form data to console
-      console.log('Booking Form Data:', formData)
+      // Create email content
+      const subject = encodeURIComponent(`Consultation Request from ${formData.fullName}`)
+      const body = encodeURIComponent(
+        `Hello Mina,
+
+You have a new consultation request:
+
+Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Preferred Date: ${formData.preferredDate}
+Preferred Time: ${formData.preferredTime}
+
+Message:
+${formData.message || 'No additional message provided'}
+
+Please confirm this appointment with the client.
+
+Best regards,
+Your Website`
+      )
+
+      // Open email client with mailto
+      const mailtoLink = `mailto:mazehmina@gmail.com?subject=${subject}&body=${body}`
       
+      // Try multiple methods to ensure email client opens
+      try {
+        // Method 1: window.location.href (most reliable)
+        window.location.href = mailtoLink
+      } catch (error) {
+        // Method 2: window.open as fallback
+        window.open(mailtoLink, '_blank')
+      }
+
       // Reset form
       setFormData({
         fullName: '',
@@ -92,9 +123,6 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
       
       // Close modal
       onClose()
-      
-      // Show success message (you can replace this with a toast notification)
-      alert('Thank you! Your consultation request has been submitted. We\'ll contact you soon to confirm your appointment.')
     }
   }
 
