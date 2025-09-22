@@ -47,7 +47,7 @@ Thank you!`
   return (
     <Button 
       size={size} 
-      className={`w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-200 hover:shadow-lg ${className}`}
+      className={`w-full bg-black hover:bg-gray-800 text-white rounded-lg transition-all duration-200 hover:shadow-lg ${className}`}
       onClick={handleJoinCourse}
     >
       <span className="flex items-center justify-center gap-2">
