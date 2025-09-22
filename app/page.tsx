@@ -71,7 +71,23 @@ ${formData.name}`
 
     // Open email client with mailto
     const mailtoLink = `mailto:mazehmina@gmail.com?subject=${subject}&body=${body}`
-    window.open(mailtoLink, '_blank')
+    
+    // Try multiple methods to ensure email client opens
+    try {
+      // Method 1: window.location.href (most reliable)
+      window.location.href = mailtoLink
+    } catch (error) {
+      // Method 2: window.open as fallback
+      window.open(mailtoLink, '_blank')
+    }
+
+    // Clear the form after opening email client
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    })
   }
 
   useEffect(() => {
